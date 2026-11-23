@@ -1,0 +1,281 @@
+/* Design tokens and base styles for naous.dev. Component styles live with their components. */
+
+:root {
+	--ink: #1b1c1f;
+	--ink-fill: #1f2023;
+	--ink-soft: #2a2c30;
+	--muted: #55585e;
+	--muted-soft: #64676d;
+	--faint: #9a9da2;
+	--line: #e2e3e6;
+	--line-strong: #cbcdd1;
+	--surface: #f6f6f7;
+	--surface-hover: #f1f1f3;
+	/* Page background, raised cards, and text that sits on a filled (--ink-fill) shape. */
+	--bg: #ffffff;
+	--card: #ffffff;
+	/* A card that sits on another card (the mock-ups inside panels). */
+	--raised: #ffffff;
+	--on-fill: #ffffff;
+	--ring: #e3e4e7;
+	--peach: #fff0e4;
+	--peach-hover: #fff8f2;
+	/* Text and icons that sit on peach. Dark in both themes, because peach stays light. */
+	--on-peach: #1b1c1f;
+
+	--font-sans: 'Instrument Sans Variable', system-ui, sans-serif;
+	--font-serif: 'Instrument Serif', Georgia, serif;
+
+	--ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+	--page-max: 1280px;
+	--gutter: 32px;
+	--section-gap: 200px;
+
+	color-scheme: light;
+}
+
+/*
+ * Dark theme: chosen with the toggle in the section nav, which sets data-theme on <html>.
+ * The same tokens, re-pointed to a soft charcoal palette. Filled shapes turn light and their
+ * text turns dark. Peach stays peach, a shade deeper so it does not glare on the dark page.
+ *
+ * Shadows do not show on a dark page, so depth comes from tone instead: each layer is a
+ * clear step lighter than the one it sits on (bg, surface, card, raised). Lines are a
+ * see-through white, so they stay visible on every one of those layers.
+ */
+:root[data-theme='dark'] {
+	--ink: #f3f3f4;
+	--ink-fill: #f3f3f4;
+	--ink-soft: #d6d7da;
+	--muted: #a4a7ac;
+	--muted-soft: #8e9196;
+	--faint: #878a90;
+	--line: rgb(255 255 255 / 0.1);
+	--line-strong: rgb(255 255 255 / 0.2);
+	--ring: rgb(255 255 255 / 0.13);
+	--bg: #1b1c1f;
+	--surface: #26272b;
+	--surface-hover: #2c2d32;
+	--card: #323339;
+	--raised: #40424a;
+	--on-fill: #1b1c1f;
+	--peach: #f6d6bf;
+	/* The hover wash on tiles and cards: a lift in tone, not a colour. */
+	--peach-hover: #2a2b30;
+
+	color-scheme: dark;
+}
+
+@media (max-width: 860px) {
+	:root {
+		--gutter: 20px;
+		--section-gap: 128px;
+	}
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Scrollbars: a slim, quiet thumb with no track or arrow buttons, in either theme. */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--line-strong) transparent;
+}
+
+html {
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* Stop the page scrolling behind an open modal. */
+html:has(dialog[open]) {
+	overflow: hidden;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--font-sans);
+	font-size: 19px;
+	font-weight: 500;
+	line-height: 1.55;
+	overflow-x: clip;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+a {
+	color: var(--ink);
+}
+
+button,
+input,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+	outline: 2px solid var(--ink-fill);
+	outline-offset: 3px;
+	border-radius: 8px;
+}
+
+/* Layout helpers shared by every section. */
+.container {
+	width: 100%;
+	max-width: var(--page-max);
+	margin: 0 auto;
+	padding: 0 var(--gutter);
+}
+
+/*
+ * Every section carries half the gap above and half below. Two neighbours add up to the full
+ * gap, and a jump from the nav lands with the section's label near the top of the screen.
+ */
+.section {
+	padding-block: calc(var(--section-gap) / 2);
+}
+
+/* The italic serif accent used for one or two words in a headline. */
+.accent {
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-weight: 400;
+	letter-spacing: -0.015em;
+}
+
+/* An underlined text link with a trailing arrow: "Read more". Works on a link, button or span. */
+.text-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font-size: 16px;
+	font-weight: 500;
+	text-decoration: underline;
+	text-decoration-color: var(--line-strong);
+	text-underline-offset: 5px;
+	cursor: pointer;
+}
+
+/* The small grey heading above a block inside a modal: "The problem", "Tools". */
+.small-label {
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--muted);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+@media (max-width: 860px) {
+	.only-desktop {
+		display: none !important;
+	}
+}
+
+@media (min-width: 861px) {
+	.only-phone {
+		display: none !important;
+	}
+}
+
+/* Scroll reveal: the classes are added by reveal() in src/lib/motion.ts. */
+.reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition:
+		opacity 0.9s var(--ease) var(--reveal-delay, 0ms),
+		transform 0.9s var(--ease) var(--reveal-delay, 0ms);
+}
+
+.reveal.revealed {
+	opacity: 1;
+	transform: none;
+}
+
+/* Shared motion. One easing everywhere; see --ease. */
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(22px);
+	}
+}
+
+@keyframes fade-up {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+}
+
+@keyframes pop {
+	from {
+		opacity: 0;
+		transform: translateY(18px) scale(0.96);
+	}
+}
+
+@keyframes travel {
+	0% {
+		left: 0;
+		opacity: 0;
+	}
+	10%,
+	90% {
+		opacity: 1;
+	}
+	100% {
+		left: 100%;
+		opacity: 0;
+	}
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin-back {
+	to {
+		transform: rotate(-360deg);
+	}
+}
+
+/* Reduced motion: stop continuous movement only. Fades and colour changes stay. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.continuous {
+		animation: none !important;
+	}
+}
