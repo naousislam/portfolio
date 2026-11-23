@@ -27,7 +27,7 @@
 					<span class="title">{skill.title}</span>
 					<span class="line">{skill.line}</span>
 					<span class="more">
-						<span class="more-text">See more</span>
+						<span class="more-text">See More</span>
 						<ArrowRight size={16} aria-hidden="true" />
 					</span>
 				</button>

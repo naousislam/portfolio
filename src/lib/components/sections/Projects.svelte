@@ -3,7 +3,7 @@
 	import type { EmblaCarouselType } from 'embla-carousel';
 	import emblaCarousel from 'embla-carousel-svelte';
 	import { projects } from '#lib/content/projects.ts';
-	import { reveal } from '#lib/motion.ts';
+	import { pauseOffscreen, reveal } from '#lib/motion.ts';
 	import Chip from '#lib/components/ui/Chip.svelte';
 	import Modal from '#lib/components/ui/Modal.svelte';
 	import SectionLabel from '#lib/components/ui/SectionLabel.svelte';
@@ -18,12 +18,23 @@
 	 */
 	let carousel = $state<EmblaCarouselType>();
 	let focused = $state(0);
+	// True while the carousel is moving. Loops pause for that time so the swipe stays smooth.
+	let moving = $state(false);
+	let restTimer: ReturnType<typeof setTimeout> | undefined;
+
+	// Movement reports itself many times a second; a short quiet spell means it has stopped.
+	function onMove() {
+		moving = true;
+		clearTimeout(restTimer);
+		restTimer = setTimeout(() => (moving = false), 180);
+	}
 
 	function onCarouselReady(event: CustomEvent<EmblaCarouselType>) {
 		const api = event.detail;
 		carousel = api;
 		focused = api.selectedScrollSnap();
 		api.on('select', () => (focused = api.selectedScrollSnap()));
+		api.on('scroll', onMove);
 	}
 
 	let detail = $state(projects[0]);
@@ -47,7 +58,7 @@
 			<SectionLabel>What I've built</SectionLabel>
 		</div>
 
-		<div class="carousel" {@attach reveal(100)}>
+		<div class={['carousel', { moving }]} {@attach reveal(100)} {@attach pauseOffscreen()}>
 			<div
 				class={['viewport', { ready: carousel }]}
 				use:emblaCarousel={{ options: { loop: true, align: 'center' }, plugins: [] }}
@@ -72,7 +83,7 @@
 								<span class="category">{project.category}</span>
 								<!-- Only the project in focus opens; its neighbours come into focus first. -->
 								<span class="more text-link">
-									Read more
+									Read More
 									<ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
 								</span>
 							</button>
@@ -135,6 +146,8 @@
 		cursor: pointer;
 		/* Out of focus: smaller and quieter. */
 		opacity: 0.45;
+		/* Keeps each card on its own graphics layer, so resizing one never redraws the others. */
+		will-change: transform, opacity;
 		transform: scale(0.88);
 		transition:
 			opacity 0.6s var(--ease),
@@ -148,7 +161,8 @@
 
 	/* Only the project in focus plays its loop. The dimmed ones hold still, which keeps
 	   swiping smooth on a phone. */
-	.slide:not(.focused) :global(*) {
+	.slide:not(.focused) :global(*),
+	.carousel.moving :global(*) {
 		animation-play-state: paused;
 	}
 
@@ -217,6 +231,12 @@
 	@media (max-width: 860px) {
 		.carousel {
 			--visual: 300px;
+		}
+
+		/* The pictures are drawn for a wider card. On a phone they shrink a little and sit lower,
+		   so none of them runs under the badge. */
+		.visual > :global(:not(.project-badge)) {
+			transform: translateY(14px) scale(0.86);
 		}
 	}
 </style>

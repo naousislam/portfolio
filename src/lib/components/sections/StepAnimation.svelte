@@ -347,6 +347,7 @@
 
 	.wire {
 		position: relative;
+		container-type: inline-size;
 		flex: 1 1 0;
 		height: 2px;
 		background: var(--line-strong);

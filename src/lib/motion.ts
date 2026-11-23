@@ -34,6 +34,22 @@ export function reveal(delay = 0): Attachment<HTMLElement> {
 }
 
 /**
+ * Pauses every CSS animation inside an element while it is off screen.
+ * Use as `{@attach pauseOffscreen()}` on anything that loops forever (orbits, travelling
+ * dots). A loop nobody can see still costs the phone work on every frame.
+ */
+export function pauseOffscreen(): Attachment<HTMLElement> {
+	return (node) => {
+		const observer = new IntersectionObserver(
+			([entry]) => node.toggleAttribute('data-offscreen', !entry.isIntersecting),
+			{ rootMargin: '80px' }
+		);
+		observer.observe(node);
+		return () => observer.disconnect();
+	};
+}
+
+/**
  * A pair for a highlight that slides between items (the story tabs, the section nav):
  * the pill leaving one item and the pill arriving in the next are animated as one.
  */

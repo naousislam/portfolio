@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import { steps, STEP_INTERVAL_MS } from '#lib/content/steps.ts';
-	import { reveal, swapIn, swapOut } from '#lib/motion.ts';
+	import { pauseOffscreen, reveal, swapIn, swapOut } from '#lib/motion.ts';
 	import IconBadge from '#lib/components/ui/IconBadge.svelte';
 	import SectionLabel from '#lib/components/ui/SectionLabel.svelte';
 	import StepAnimation from './StepAnimation.svelte';
@@ -47,7 +47,7 @@
 				{/each}
 			</div>
 
-			<div class="stage" {@attach reveal(200)}>
+			<div class="stage" {@attach reveal(200)} {@attach pauseOffscreen()}>
 				<div class="text">
 					{#key step.id}
 						<div class="swap" in:fly={swapIn} out:fade={swapOut}>

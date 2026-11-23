@@ -220,6 +220,13 @@ button:focus-visible,
 	transform: none;
 }
 
+/* Set by pauseOffscreen() in src/lib/motion.ts. */
+[data-offscreen] *,
+[data-offscreen] *::before,
+[data-offscreen] *::after {
+	animation-play-state: paused !important;
+}
+
 /* Shared motion. One easing everywhere; see --ease. */
 @keyframes rise {
 	from {
@@ -242,18 +249,23 @@ button:focus-visible,
 	}
 }
 
+/*
+ * A dot crossing its wire. It moves with transform, not `left`, so the browser can animate it
+ * without redrawing the page. 100cqw is the wire's width: the wire must set
+ * `container-type: inline-size`.
+ */
 @keyframes travel {
 	0% {
-		left: 0;
 		opacity: 0;
+		transform: translateX(0);
 	}
 	10%,
 	90% {
 		opacity: 1;
 	}
 	100% {
-		left: 100%;
 		opacity: 0;
+		transform: translateX(100cqw);
 	}
 }
 

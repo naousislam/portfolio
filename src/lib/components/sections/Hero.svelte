@@ -1,12 +1,13 @@
 <script lang="ts">
 	import portrait from '#lib/assets/portrait.png?enhanced';
 	import { hero } from '#lib/content/site.ts';
+	import { pauseOffscreen } from '#lib/motion.ts';
 	import AccentHeadline from '#lib/components/ui/AccentHeadline.svelte';
 	import Button from '#lib/components/ui/Button.svelte';
 	import TopBar from './TopBar.svelte';
 </script>
 
-<section id="intro" class="hero">
+<section id="intro" class="hero" {@attach pauseOffscreen()}>
 	<TopBar />
 
 	<!-- The portrait in its peach circle, with slow orbiting rings around it. -->

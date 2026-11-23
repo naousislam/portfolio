@@ -359,6 +359,7 @@
 
 	.wire {
 		position: relative;
+		container-type: inline-size;
 		flex: 1 1 0;
 		height: 2px;
 		background: var(--line-strong);
@@ -441,23 +442,44 @@
 
 	/*
 	 * The loops. Each picture has one quiet movement that says what the project does.
+	 *
+	 * Every loop animates only opacity or transform. Those two run on the graphics layer, so a
+	 * loop never makes the browser redraw the card, which is what keeps swiping smooth. A shape
+	 * that "changes colour" is really a second shape on top, fading in and out.
 	 * With reduced motion they all stop and the pictures rest in their drawn state.
 	 */
 
 	/* Monody: the highlighted menu item steps down the sidebar. */
-	.sidebar span {
+	.sidebar span,
+	.sidebar .dark {
+		position: relative;
+		background: var(--ring);
+	}
+
+	.sidebar span::after,
+	.pager span::after,
+	.option::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		opacity: 0;
+	}
+
+	.sidebar span::after {
+		background: var(--ink-fill);
 		animation: menu-step 8s ease infinite;
 	}
 
-	.sidebar span:nth-child(2) {
+	.sidebar span:nth-child(2)::after {
 		animation-delay: 2s;
 	}
 
-	.sidebar span:nth-child(3) {
+	.sidebar span:nth-child(3)::after {
 		animation-delay: 4s;
 	}
 
-	.sidebar span:nth-child(4) {
+	.sidebar span:nth-child(4)::after {
 		animation-delay: 6s;
 	}
 
@@ -465,24 +487,32 @@
 		0%,
 		30%,
 		100% {
-			background: var(--ring);
+			opacity: 0;
 		}
 		5%,
 		25% {
-			background: var(--ink-fill);
+			opacity: 1;
 		}
 	}
 
 	/* Landing page: the three-step form moves through its steps. */
-	.pager span {
+	.pager span,
+	.pager .on {
+		position: relative;
+		width: 10px;
+		background: var(--ring);
+	}
+
+	.pager span::after {
+		background: var(--ink-fill);
 		animation: form-step 6s ease infinite;
 	}
 
-	.pager span:nth-child(2) {
+	.pager span:nth-child(2)::after {
 		animation-delay: 2s;
 	}
 
-	.pager span:nth-child(3) {
+	.pager span:nth-child(3)::after {
 		animation-delay: 4s;
 	}
 
@@ -490,13 +520,11 @@
 		0%,
 		38%,
 		100% {
-			width: 6px;
-			background: var(--ring);
+			opacity: 0;
 		}
 		5%,
 		33% {
-			width: 18px;
-			background: var(--ink-fill);
+			opacity: 1;
 		}
 	}
 
@@ -516,12 +544,20 @@
 	}
 
 	/* Online joining: the choice moves between the two options. */
-	.option {
-		border: 2px solid transparent;
+	.option,
+	.option.chosen {
+		position: relative;
+		border: 0;
+		background: var(--surface);
+	}
+
+	.option::after {
+		border: 2px solid var(--ink-fill);
+		background: var(--peach);
 		animation: choose 6s ease infinite;
 	}
 
-	.option.chosen {
+	.option.chosen::after {
 		animation-delay: -3s;
 	}
 
@@ -529,13 +565,11 @@
 		0%,
 		45%,
 		100% {
-			border-color: transparent;
-			background: var(--surface);
+			opacity: 0;
 		}
 		50%,
 		95% {
-			border-color: var(--ink-fill);
-			background: var(--peach);
+			opacity: 1;
 		}
 	}
 
@@ -589,14 +623,21 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.sidebar span,
-		.pager span,
+		.sidebar span::after,
+		.pager span::after,
+		.option::after,
 		.bar,
-		.option,
 		.entry .amount,
 		.approval,
 		.approve {
 			animation: none;
+		}
+
+		/* At rest: the first menu item, the first form step and the second option are picked. */
+		.sidebar .dark::after,
+		.pager .on::after,
+		.option.chosen::after {
+			opacity: 1;
 		}
 	}
 </style>

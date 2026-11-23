@@ -85,7 +85,7 @@
 						<h3 class="card-headline"><AccentHeadline headline={item.headline} /></h3>
 						<p class="card-body">{item.body}</p>
 						<button type="button" class="more text-link" onclick={() => readMore(index)}>
-							Read more
+							Read More
 							<ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
 						</button>
 						<div class="card-stats"><StatRow stats={item.stats} size="compact" /></div>

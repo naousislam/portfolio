@@ -27,8 +27,8 @@ export const hero = {
 	} satisfies Headline,
 	supporting:
 		'Custom software, connected systems and automation, built with care for how it looks and feels.',
-	primary: 'Start a project',
-	secondary: 'See the work'
+	primary: 'Start a Project',
+	secondary: 'See the Work'
 };
 
 export const contact = {
@@ -40,7 +40,7 @@ export const contact = {
 		email: 'Email',
 		message: 'What would you like built?'
 	},
-	submit: 'Send message',
+	submit: 'Send Message',
 	success: "Thanks. I've got your message and will reply within two business days.",
 	failure: `Sorry, that didn't send. Please try again, or email me at ${site.email}.`,
 	tooMany: `That's a lot of messages in a short time. Please try again later, or email me at ${site.email}.`,

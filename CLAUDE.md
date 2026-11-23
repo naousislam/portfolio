@@ -111,6 +111,8 @@ The copy is governed by the owner's content spec:
 - Mai is "built and tested on Monody's own workspaces, not yet released to customers".
 - Tool logos come from Simple Icons; interface icons from Lucide. Never draw a company's logo.
 - Tone: plain, warm, modest, first person. No buzzwords.
+- Button and link labels are in Title Case ("Start a Project", "Read More"). Sentences and
+  section names are not.
 
 ### 4. Motion goes through `motion.ts`
 
@@ -118,6 +120,11 @@ The copy is governed by the owner's content spec:
 - A highlight that slides between items: `slidingPill()` (Svelte `crossfade`).
 - Content that swaps in place: `in:fly={swapIn} out:fade={swapOut}` inside one grid cell.
 - CSS transitions use `var(--ease)`.
+- A looping animation may only animate `opacity` and `transform`. Anything else (colour,
+  width, `left`, shadows) makes the browser redraw on every frame and drops the frame rate
+  on phones. To "change colour", fade a second shape in on top.
+- Anything that loops forever sits inside `{@attach pauseOffscreen()}` so it stops when it
+  can't be seen. Avoid `backdrop-filter` and animated `filter` on phones.
 - Reduced motion stops only **continuous** movement (orbits, travelling dots, loops). Fades
   and slides stay. Give endless animations the `continuous` class or their own
   `prefers-reduced-motion` rule.

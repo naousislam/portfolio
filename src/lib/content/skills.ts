@@ -46,7 +46,7 @@ export const skills: Skill[] = [
 		id: 'design',
 		icon: PenTool,
 		title: 'Design',
-		line: 'Product screens, design systems, landing pages',
+		line: 'Product Screens, Design Systems, Landing Pages',
 		lead: 'Screens and systems that people use all day, designed to feel calm and clear.',
 		items: [
 			{
@@ -70,7 +70,7 @@ export const skills: Skill[] = [
 	{
 		id: 'front-end',
 		icon: Monitor,
-		title: 'Front end',
+		title: 'Front End',
 		line: 'SvelteKit, Svelte 5, TypeScript, Tailwind',
 		lead: 'Fast, responsive interfaces that work as well on a phone as on a desk.',
 		items: [
@@ -96,8 +96,8 @@ export const skills: Skill[] = [
 	{
 		id: 'back-end',
 		icon: Server,
-		title: 'Back end',
-		line: 'APIs, auth, roles, Node, Bun, Python',
+		title: 'Back End',
+		line: 'APIs, Auth, Roles, Node, Bun, Python',
 		lead: 'The rules, APIs and access control that sit behind the screens.',
 		items: [
 			{
@@ -126,7 +126,7 @@ export const skills: Skill[] = [
 		id: 'data',
 		icon: Database,
 		title: 'Data',
-		line: 'Postgres, Neon, Drizzle, SQL reporting',
+		line: 'Postgres, Neon, Drizzle, SQL Reporting',
 		lead: 'Schemas, queries and reports that stay fast and stay trusted.',
 		items: [
 			{
@@ -156,7 +156,7 @@ export const skills: Skill[] = [
 		id: 'automation',
 		icon: RotateCw,
 		title: 'Automation',
-		line: 'Background jobs, syncs, HubSpot, ad platforms',
+		line: 'Background Jobs, Syncs, HubSpot, Ad Platforms',
 		lead: 'The work that happens between systems, without anyone having to remember it.',
 		items: [
 			{
@@ -185,7 +185,7 @@ export const skills: Skill[] = [
 		id: 'ai',
 		icon: Sparkles,
 		title: 'AI',
-		line: 'Agents with approval steps, Claude, Claude Code',
+		line: 'Agents with Approval Steps, Claude, Claude Code',
 		lead: 'Assistants that can act for you, within limits you can trust.',
 		items: [
 			{
@@ -213,7 +213,7 @@ export const skills: Skill[] = [
 		id: 'communication',
 		icon: MessageCircle,
 		title: 'Communication',
-		line: 'Plain updates, clear docs, walkthroughs',
+		line: 'Plain Updates, Clear Docs, Walkthroughs',
 		lead: 'Making sure everyone knows what is happening, and why.',
 		items: [
 			{
@@ -238,7 +238,7 @@ export const skills: Skill[] = [
 		id: 'iteration',
 		icon: Repeat,
 		title: 'Iteration',
-		line: 'Short loops, real feedback, tested each round',
+		line: 'Short Loops, Real Feedback, Tested Each Round',
 		lead: 'The same five steps, repeated in short loops until it feels right.',
 		items: [
 			{

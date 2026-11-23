@@ -51,7 +51,7 @@ export const projects: Project[] = [
 			label: 'Status',
 			text: 'Live since October 2026, with more locations planned.'
 		},
-		link: { label: 'Visit the live page', href: 'https://codeninjas.online' }
+		link: { label: 'Visit the Live Page', href: 'https://codeninjas.online' }
 	},
 	{
 		id: 'reporting-app',
