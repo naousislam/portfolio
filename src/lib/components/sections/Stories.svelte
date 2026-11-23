@@ -218,7 +218,6 @@
 		display: flex;
 		flex: 0 0 88%;
 		flex-direction: column;
-		height: 436px;
 		padding: 24px 22px 26px;
 		border-radius: 28px;
 		background: var(--surface);
@@ -247,8 +246,22 @@
 		text-wrap: balance;
 	}
 
+	/*
+	 * Headlines run to two or three lines and the number labels to two or three as well. Each
+	 * reserves room for three, so the text, "Read more" and the divider sit at the same height
+	 * on every card and nothing is squeezed.
+	 */
+	.card .card-headline {
+		min-height: calc(3 * 1.14em);
+	}
+
+	.card-stats :global(.label) {
+		min-height: calc(3 * 1.3em);
+	}
+
 	.card-body {
 		display: -webkit-box;
+		flex: none;
 		margin-top: 20px;
 		overflow: hidden;
 		color: var(--ink-soft);
@@ -262,8 +275,9 @@
 		margin-top: 14px;
 	}
 
+	/* A fixed gap, not pushed to the bottom, so the divider sits at the same height on every card. */
 	.card-stats {
-		margin-top: auto;
+		margin-top: 24px;
 	}
 
 	.controls {
