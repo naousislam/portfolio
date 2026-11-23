@@ -32,7 +32,7 @@ export const hero = {
 };
 
 export const contact = {
-	linksHeading: 'More info',
+	linksHeading: 'More Info',
 	heading: { lead: "Let's", accent: 'talk.' } satisfies Headline,
 	line: "Tell me what's not working. I reply within two business days.",
 	fields: {
@@ -53,28 +53,28 @@ export const contactLinks: ContactLink[] = [
 	{
 		icon: Mail,
 		label: site.email,
-		hint: 'Opens your email app',
+		hint: 'Opens your email app.',
 		href: `mailto:${site.email}`,
 		kind: 'internal'
 	},
 	{
 		icon: FileText,
 		label: 'Résumé',
-		hint: 'Downloads a PDF',
+		hint: 'Downloads a PDF.',
 		href: site.resume,
 		kind: 'download'
 	},
 	{
 		icon: Code,
 		label: 'GitHub',
-		hint: 'My code, opens in a new tab',
+		hint: 'My code, opens in a new tab.',
 		href: site.github,
 		kind: 'external'
 	},
 	{
 		icon: UserPlus,
 		label: 'LinkedIn',
-		hint: 'Connect with me, opens in a new tab',
+		hint: 'Connect with me, opens in a new tab.',
 		href: site.linkedin,
 		kind: 'external'
 	}
@@ -82,5 +82,5 @@ export const contactLinks: ContactLink[] = [
 
 export const footer = {
 	location: 'Vancouver, BC',
-	credit: 'Designed and built by Naous Islam'
+	credit: 'Designed and Built by Naous Islam'
 };

@@ -22,7 +22,7 @@
 		return { step, x, y, labelX: x + label.dx, labelY: y + label.dy, anchor: label.anchor };
 	});
 
-	const description = `${steps.map((step) => step.title).join(', ')}, then around again`;
+	const description = `${steps.map((step) => step.title).join(', ')}, Then Around Again`;
 </script>
 
 <svg viewBox="0 0 520 330" role="img" aria-label={description}>
@@ -44,7 +44,7 @@
 			{node.step.title}
 		</text>
 	{/each}
-	<text x={centre.x} y={centre.y + 5} text-anchor="middle" class="centre">and around again</text>
+	<text x={centre.x} y={centre.y + 5} text-anchor="middle" class="centre">And Around Again</text>
 </svg>
 
 <style>

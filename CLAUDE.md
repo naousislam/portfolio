@@ -111,8 +111,12 @@ The copy is governed by the owner's content spec:
 - Mai is "built and tested on Monody's own workspaces, not yet released to customers".
 - Tool logos come from Simple Icons; interface icons from Lucide. Never draw a company's logo.
 - Tone: plain, warm, modest, first person. No buzzwords.
-- Button and link labels are in Title Case ("Start a Project", "Read More"). Sentences and
-  section names are not.
+- Anything that names or labels is in Title Case: buttons, links, chips, badges, tabs, section
+  labels, card and modal headings, number labels ("Start a Project", "What I've Built",
+  "Qualified Leads a Month"). Short joining words stay lower case (a, the, and, of, on, to,
+  in, by, as, with, from).
+- Anything that is a sentence stays in sentence case and ends with a period: paragraphs,
+  one-line descriptions, and the hints under the contact links.
 
 ### 4. Motion goes through `motion.ts`
 

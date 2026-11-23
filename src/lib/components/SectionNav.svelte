@@ -21,9 +21,9 @@
 
 	const items: NavItem[] = [
 		{ href: '#intro', label: 'Top', icon: House, sections: ['intro'] },
-		{ href: '#about', label: 'Who I am', icon: User, sections: ['about'] },
-		{ href: '#how', label: 'How I work', icon: Layers, sections: ['how', 'skills'] },
-		{ href: '#work', label: "What I've built", icon: LayoutGrid, sections: ['work'] },
+		{ href: '#about', label: 'Who I Am', icon: User, sections: ['about'] },
+		{ href: '#how', label: 'How I Work', icon: Layers, sections: ['how', 'skills'] },
+		{ href: '#work', label: "What I've Built", icon: LayoutGrid, sections: ['work'] },
 		{ href: '#contact', label: 'Contact', icon: Mail, sections: ['contact'] }
 	];
 
@@ -102,7 +102,7 @@
 		theme = theme === 'dark' ? 'light' : 'dark';
 		applyTheme(theme);
 	}
-	const themeLabel = $derived(theme === 'dark' ? 'Light theme' : 'Dark theme');
+	const themeLabel = $derived(theme === 'dark' ? 'Light Theme' : 'Dark Theme');
 </script>
 
 <svelte:document onclick={onDocumentClick} />

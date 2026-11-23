@@ -5,7 +5,7 @@
 	/** The small looping scene shown beside the active "How I work" step. Decorative only. */
 	let { step }: { step: Step['id'] } = $props();
 
-	const proposalRows = ["What I'll build", 'How long it takes', 'What it costs'];
+	const proposalRows = ["What I'll Build", 'How Long It Takes', 'What It Costs'];
 	const codeLines = [
 		{ width: '42%', indent: 0, tone: 'bright' },
 		{ width: '64%', indent: 24, tone: 'dim' },
@@ -22,12 +22,12 @@
 			<div class="bubble them" style:--delay="0s">Where does the day slow down?</div>
 			<div class="bubble me" style:--delay="0.5s">Month-end. Three people, two days.</div>
 			<div class="bubble them" style:--delay="1s">Show me how it's done today.</div>
-			<div class="pill found" style:--delay="1.6s">Problem found</div>
+			<div class="pill found" style:--delay="1.6s">Problem Found</div>
 		</div>
 	{:else if step === 'propose'}
 		<div class="proposal">
 			<div class="kicker" style:--delay="0s">Proposal</div>
-			<div class="title" style:--delay="0.15s">Month-end, in minutes</div>
+			<div class="title" style:--delay="0.15s">Month-End, in Minutes</div>
 			{#each proposalRows as row, index (row)}
 				<div class="row" style:--delay="{0.45 + index * 0.35}s">
 					<span>{row}</span>

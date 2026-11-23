@@ -12,10 +12,10 @@
 <h2>{project.title}</h2>
 <p class="summary">{project.summary}</p>
 
-<h3 class="small-label">The problem</h3>
+<h3 class="small-label">The Problem</h3>
 <p>{project.problem}</p>
 
-<h3 class="small-label">What I built</h3>
+<h3 class="small-label">What I Built</h3>
 <ul>
 	{#each project.built as item (item)}
 		<li>{item}</li>

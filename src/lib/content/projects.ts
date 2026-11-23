@@ -11,10 +11,10 @@ export const projects: Project[] = [
 	{
 		id: 'monody',
 		visual: 'app',
-		badge: 'Live product',
+		badge: 'Live Product',
 		title: 'Monody',
 		line: 'A product designed and built from scratch',
-		category: 'Product · design and code',
+		category: 'Product · Design and Code',
 		tag: 'Product',
 		summary: 'One system for running a gym, studio or school, designed and engineered end to end.',
 		problem:
@@ -33,11 +33,11 @@ export const projects: Project[] = [
 	{
 		id: 'landing-page',
 		visual: 'landing',
-		badge: 'Live site',
-		title: 'A landing page that books trials',
+		badge: 'Live Site',
+		title: 'A Landing Page That Books Trials',
 		line: "A page and Google Ads that turn local parents into booked free sessions for a kids' coding centre",
-		category: 'Monody client · landing page · ads',
-		tag: 'Landing page · ads',
+		category: 'Monody Client · Landing Page · Ads',
+		tag: 'Landing Page · Ads',
 		summary: "A kids' coding centre gets new families from one page and the ads that point to it.",
 		problem:
 			'The centre needed a steady way for local parents to find it, understand the programs, and book a first visit without a phone call.',
@@ -56,10 +56,10 @@ export const projects: Project[] = [
 	{
 		id: 'reporting-app',
 		visual: 'bars',
-		badge: '17 locations',
-		title: 'A daily reporting app',
+		badge: '17 Locations',
+		title: 'A Daily Reporting App',
 		line: 'One dashboard, opened every day',
-		category: 'Dashboard · design and code',
+		category: 'Dashboard · Design and Code',
 		tag: 'Dashboard',
 		summary:
 			'Funnel, lead source and sales-rep performance in one place, designed for people who are not analysts.',
@@ -79,10 +79,10 @@ export const projects: Project[] = [
 	{
 		id: 'online-joining',
 		visual: 'join',
-		badge: 'All 17 locations live',
-		title: 'Online joining',
+		badge: 'All 17 Locations Live',
+		title: 'Online Joining',
 		line: 'A full website and join flow, with live pricing for every location',
-		category: 'Website · landing pages · API integration',
+		category: 'Website · Landing Pages · API Integration',
 		tag: 'Website · API',
 		summary:
 			'A new member can join any location from the website, with the right price for that location, and no failed sign-up is lost.',
@@ -101,11 +101,11 @@ export const projects: Project[] = [
 	{
 		id: 'commissions',
 		visual: 'ledger',
-		badge: 'Running since August',
-		title: 'Commission reporting',
+		badge: 'Running Since August',
+		title: 'Commission Reporting',
 		line: 'Payroll receives it every two weeks',
-		category: 'Custom software',
-		tag: 'Custom software',
+		category: 'Custom Software',
+		tag: 'Custom Software',
 		summary:
 			'Sales commissions went from a manual job to statements that payroll receives every two weeks.',
 		problem:
@@ -124,10 +124,10 @@ export const projects: Project[] = [
 	{
 		id: 'system-sync',
 		visual: 'sync',
-		badge: '100k runs',
-		title: 'Three systems, one truth',
+		badge: '100k Runs',
+		title: 'Three Systems, One Truth',
 		line: 'Systems that stay in sync on their own',
-		category: 'Integration · automation',
+		category: 'Integration · Automation',
 		tag: 'Integration',
 		summary:
 			"The CRM, the membership system and the sales platform now stay in sync on their own, and someone is told when they don't.",
@@ -147,11 +147,11 @@ export const projects: Project[] = [
 	{
 		id: 'mai',
 		visual: 'agent',
-		badge: 'Approval on every action',
-		title: 'Mai, an AI agent',
+		badge: 'Approval on Every Action',
+		title: 'Mai, an AI Agent',
 		line: 'An assistant that helps run the day-to-day of a business, and asks before it acts',
-		category: 'AI feature · in testing',
-		tag: 'AI · in testing',
+		category: 'AI Feature · In Testing',
+		tag: 'AI · In Testing',
 		summary:
 			'An assistant that helps run the day-to-day of a business from inside the product, built so it cannot act without permission.',
 		problem:

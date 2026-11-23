@@ -52,10 +52,10 @@
 	}
 </script>
 
-<section id="work" aria-label="What I've built">
+<section id="work" aria-label="What I've Built">
 	<div class="section">
 		<div class="container">
-			<SectionLabel>What I've built</SectionLabel>
+			<SectionLabel>What I've Built</SectionLabel>
 		</div>
 
 		<div class={['carousel', { moving }]} {@attach reveal(100)} {@attach pauseOffscreen()}>

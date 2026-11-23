@@ -51,17 +51,17 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: LayoutGrid,
-				title: 'A design system',
+				title: 'A Design System',
 				line: 'One set of components behind every screen of a product'
 			},
 			{
 				icon: ChartColumn,
-				title: 'A reporting dashboard',
+				title: 'A Reporting Dashboard',
 				line: 'Built for people who are not analysts'
 			},
 			{
 				icon: FileText,
-				title: 'Campaign pages',
+				title: 'Campaign Pages',
 				line: 'About 5,500 RSVPs for an event across 17 locations'
 			}
 		],
@@ -76,15 +76,15 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: Monitor,
-				title: 'A full web app',
+				title: 'A Full Web App',
 				line: 'Product screens built from the design system'
 			},
 			{
 				icon: Funnel,
-				title: 'An analytics app',
+				title: 'An Analytics App',
 				line: 'Funnel, attribution and per-person views'
 			},
-			{ icon: Tag, title: 'An online join flow', line: 'Live pricing for every location' }
+			{ icon: Tag, title: 'An Online Join Flow', line: 'Live pricing for every location' }
 		],
 		tools: [
 			{ name: 'SvelteKit', logo: siSvelte, href: 'https://svelte.dev/docs/kit' },
@@ -102,17 +102,17 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: Calculator,
-				title: 'A commission engine',
+				title: 'A Commission Engine',
 				line: 'Rules written in code, with a frozen ledger'
 			},
 			{
 				icon: Lock,
-				title: 'Role-based APIs',
+				title: 'Role-Based APIs',
 				line: 'Each person sees only what they should'
 			},
 			{
 				icon: Server,
-				title: 'Serverless endpoints',
+				title: 'Serverless Endpoints',
 				line: '20 running behind a 119-page site'
 			}
 		],
@@ -131,17 +131,17 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: Database,
-				title: 'Reporting schemas',
+				title: 'Reporting Schemas',
 				line: 'Data models built for analytics'
 			},
 			{
 				icon: Funnel,
-				title: 'Funnel and attribution',
+				title: 'Funnel and Attribution',
 				line: 'From first lead to membership'
 			},
 			{
 				icon: Clock,
-				title: '82% fewer writes',
+				title: '82% Fewer Writes',
 				line: 'Jobs that only run during opening hours'
 			}
 		],
@@ -161,24 +161,24 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: RefreshCw,
-				title: 'A two-way CRM sync',
+				title: 'A Two-Way CRM Sync',
 				line: '10 scheduled jobs, each with a heartbeat'
 			},
 			{
 				icon: Bell,
-				title: 'A nightly health digest',
+				title: 'A Nightly Health Digest',
 				line: '21 checks, with alerts only on exceptions'
 			},
 			{
 				icon: Workflow,
-				title: '140+ CRM workflows',
+				title: '140+ CRM Workflows',
 				line: 'Lead intake, routing and follow-up'
 			}
 		],
 		tools: [
 			{ name: 'HubSpot', logo: siHubspot, href: 'https://www.hubspot.com' },
-			{ name: 'Ad platforms' },
-			{ name: 'Scheduled jobs' }
+			{ name: 'Ad Platforms' },
+			{ name: 'Scheduled Jobs' }
 		]
 	},
 	{
@@ -195,12 +195,12 @@ export const skills: Skill[] = [
 			},
 			{
 				icon: Users,
-				title: 'A multi-agent workflow',
+				title: 'A Multi-Agent Workflow',
 				line: 'One agent plans, others build small scoped tasks'
 			},
 			{
 				icon: BookOpen,
-				title: 'Written rules',
+				title: 'Written Rules',
 				line: '23 procedures the agents work under'
 			}
 		],
@@ -218,17 +218,17 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: Users,
-				title: 'Team training',
+				title: 'Team Training',
 				line: 'Hiring and training instructors and staff'
 			},
 			{
 				icon: MessageSquare,
-				title: 'Teaching the tools',
+				title: 'Teaching the Tools',
 				line: 'Showing colleagues how to find their own answers'
 			},
 			{
 				icon: FileText,
-				title: 'Handover docs',
+				title: 'Handover Docs',
 				line: 'Procedures and write-ups anyone can follow'
 			}
 		],
@@ -243,17 +243,17 @@ export const skills: Skill[] = [
 		items: [
 			{
 				icon: Upload,
-				title: 'Small changes, shipped often',
+				title: 'Small Changes, Shipped Often',
 				line: '2,100+ changes across four codebases'
 			},
 			{
 				icon: Eye,
-				title: 'Every change reviewed',
+				title: 'Every Change Reviewed',
 				line: 'Checked and approved before release'
 			},
 			{
 				icon: Shield,
-				title: 'Rules from mistakes',
+				title: 'Rules from Mistakes',
 				line: 'Each problem ends in a written rule'
 			}
 		],

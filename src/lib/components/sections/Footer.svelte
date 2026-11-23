@@ -1,11 +1,19 @@
 <script lang="ts">
+	import MapPin from '@lucide/svelte/icons/map-pin';
+	import UserPen from '@lucide/svelte/icons/user-pen';
 	import { footer } from '#lib/content/site.ts';
 </script>
 
 <footer>
 	<div class="container inner">
-		<span>{footer.location}</span>
-		<span>{footer.credit}</span>
+		<span class="item">
+			<MapPin size={16} strokeWidth={1.9} aria-hidden="true" />
+			{footer.location}
+		</span>
+		<span class="item">
+			<UserPen size={16} strokeWidth={1.9} aria-hidden="true" />
+			{footer.credit}
+		</span>
 	</div>
 </footer>
 
@@ -26,7 +34,12 @@
 		color: var(--muted);
 	}
 
-	/* Leave room for the section nav pinned to the bottom of a phone screen. */
+	.item {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
 	@media (max-width: 860px) {
 		.inner {
 			padding-bottom: 96px;

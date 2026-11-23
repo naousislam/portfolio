@@ -16,9 +16,9 @@
 	}
 </script>
 
-<section id="skills" aria-label="What I work with">
+<section id="skills" aria-label="What I Work With">
 	<div class="container section">
-		<SectionLabel>What I work with</SectionLabel>
+		<SectionLabel>What I Work With</SectionLabel>
 
 		<div class="grid" {@attach reveal(100)}>
 			{#each skills as skill, index (skill.id)}

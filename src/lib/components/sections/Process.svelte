@@ -27,9 +27,9 @@
 	const number = (index: number) => String(index + 1).padStart(2, '0');
 </script>
 
-<section id="how" aria-label="How I work">
+<section id="how" aria-label="How I Work">
 	<div class="container section">
-		<SectionLabel>How I work</SectionLabel>
+		<SectionLabel>How I Work</SectionLabel>
 
 		<div class="only-desktop">
 			<div class="steps" style:--interval="{STEP_INTERVAL_MS}ms" {@attach reveal(100)}>

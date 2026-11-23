@@ -32,9 +32,9 @@
 	}
 </script>
 
-<section id="about" aria-label="Who I am">
+<section id="about" aria-label="Who I Am">
 	<div class="container section">
-		<SectionLabel>Who I am</SectionLabel>
+		<SectionLabel>Who I Am</SectionLabel>
 
 		<div class="desktop only-desktop" {@attach reveal(100)}>
 			<div class="tabs" role="tablist" aria-label="My story">
@@ -94,7 +94,7 @@
 			</div>
 
 			<div class="controls">
-				<span class="hint">{stories.length} stories, swipe to read</span>
+				<span class="hint">{stories.length} Stories, Swipe to Read</span>
 				<div class="arrows">
 					<RoundButton label="Previous story" onclick={() => swipe(-1)}>
 						<ArrowLeft size={18} aria-hidden="true" />
