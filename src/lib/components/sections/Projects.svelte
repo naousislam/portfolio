@@ -163,6 +163,9 @@
 		/* Height of the picture on each card. */
 		--visual: 340px;
 		--lift: 16px;
+		/* How small and how faint a project is while it is out of focus. */
+		--small: 0.88;
+		--dim: 0.45;
 	}
 
 	/*
@@ -203,8 +206,8 @@
 		text-align: center;
 		cursor: pointer;
 		/* Out of focus: smaller and quieter. This class-based version is the fallback. */
-		opacity: 0.45;
-		transform: scale(0.88);
+		opacity: var(--dim);
+		transform: scale(var(--small));
 		transition:
 			opacity 0.6s var(--ease),
 			transform 0.6s var(--ease);
@@ -233,8 +236,8 @@
 			30%,
 			70%,
 			100% {
-				opacity: 0.45;
-				transform: scale(0.88);
+				opacity: var(--dim);
+				transform: scale(var(--small));
 			}
 			50% {
 				opacity: 1;
@@ -310,8 +313,14 @@
 	}
 
 	@media (max-width: 860px) {
+		/* On a phone the neighbours sit closer, larger and clearer, so a slice of each shows at
+		   the screen edges and it is plain there is more to swipe to. */
 		.carousel {
+			--slide: 74vw;
+			--gap: 10px;
 			--visual: 300px;
+			--small: 0.93;
+			--dim: 0.6;
 		}
 
 		/* The pictures are drawn for a wider card. On a phone they shrink a little and sit lower,
