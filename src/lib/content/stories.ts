@@ -1,7 +1,18 @@
 import type { Story } from './types';
 
-/** "Who I am": four stories, in the order Nao lived them. Copy is fixed by the content spec. */
+/** "Who I am": five stories, in the order Nao lived them. Copy is fixed by the content spec. */
 export const stories: Story[] = [
+	{
+		id: 'code',
+		tab: 'Learning to Code',
+		headline: { lead: "I've always been the one asking how things", accent: 'work.' },
+		body: 'I started coding in grade 10 and studied computer science in college, but I learned the most by building things. I always wanted to know the next piece: how a page is styled, how it does something, where it lives, and how it stays fast and secure. In my first year I built the back end of an online store on my own, just to see how one works. Building was the easier half. The harder half was getting people to use what I had built, and earning their trust that it was safe and worth using. I left school to help my family and to build things people use every day. Today AI tools let me build far more, because I know how the pieces should fit together.',
+		stats: [
+			{ value: '10th', label: 'Grade I Started Coding' },
+			{ value: 'Year 1', label: 'Built an Online Store' },
+			{ value: '74.4k', label: 'Views on My Linux Guide' }
+		]
+	},
 	{
 		id: 'grocery',
 		tab: 'Family Grocery Store',
