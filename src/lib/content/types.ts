@@ -64,6 +64,8 @@ export interface Project {
 	title: string;
 	line: string;
 	category: string;
+	/** A short form of the category for the chip in the detail view. Must fit one line on a phone. */
+	tag: string;
 	summary: string;
 	problem: string;
 	built: string[];

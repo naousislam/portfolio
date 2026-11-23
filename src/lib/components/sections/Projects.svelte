@@ -146,6 +146,12 @@
 		transform: none;
 	}
 
+	/* Only the project in focus plays its loop. The dimmed ones hold still, which keeps
+	   swiping smooth on a phone. */
+	.slide:not(.focused) :global(*) {
+		animation-play-state: paused;
+	}
+
 	.card:focus-visible {
 		border-radius: 28px;
 	}

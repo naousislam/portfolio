@@ -233,6 +233,11 @@
 	 * section's label below.
 	 */
 	@media (max-width: 860px) {
+		/* Moving shadows are expensive on a phone; the cards' outline is enough there. */
+		.card {
+			filter: none;
+		}
+
 		.hero {
 			min-height: 0;
 			/* The next section's own top gap would double the space under the photo. */

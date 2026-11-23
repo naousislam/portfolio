@@ -15,6 +15,7 @@ export const projects: Project[] = [
 		title: 'Monody',
 		line: 'A product designed and built from scratch',
 		category: 'Product · design and code',
+		tag: 'Product',
 		summary: 'One system for running a gym, studio or school, designed and engineered end to end.',
 		problem:
 			'Membership businesses run on several disconnected tools for leads, members, classes and billing. Each has its own look and its own data.',
@@ -36,6 +37,7 @@ export const projects: Project[] = [
 		title: 'A landing page that books trials',
 		line: "A page and Google Ads that turn local parents into booked free sessions for a kids' coding centre",
 		category: 'Monody client · landing page · ads',
+		tag: 'Landing page · ads',
 		summary: "A kids' coding centre gets new families from one page and the ads that point to it.",
 		problem:
 			'The centre needed a steady way for local parents to find it, understand the programs, and book a first visit without a phone call.',
@@ -58,6 +60,7 @@ export const projects: Project[] = [
 		title: 'A daily reporting app',
 		line: 'One dashboard, opened every day',
 		category: 'Dashboard · design and code',
+		tag: 'Dashboard',
 		summary:
 			'Funnel, lead source and sales-rep performance in one place, designed for people who are not analysts.',
 		problem:
@@ -80,6 +83,7 @@ export const projects: Project[] = [
 		title: 'Online joining',
 		line: 'A full website and join flow, with live pricing for every location',
 		category: 'Website · landing pages · API integration',
+		tag: 'Website · API',
 		summary:
 			'A new member can join any location from the website, with the right price for that location, and no failed sign-up is lost.',
 		problem:
@@ -101,6 +105,7 @@ export const projects: Project[] = [
 		title: 'Commission reporting',
 		line: 'Payroll receives it every two weeks',
 		category: 'Custom software',
+		tag: 'Custom software',
 		summary:
 			'Sales commissions went from a manual job to statements that payroll receives every two weeks.',
 		problem:
@@ -123,6 +128,7 @@ export const projects: Project[] = [
 		title: 'Three systems, one truth',
 		line: 'Systems that stay in sync on their own',
 		category: 'Integration · automation',
+		tag: 'Integration',
 		summary:
 			"The CRM, the membership system and the sales platform now stay in sync on their own, and someone is told when they don't.",
 		problem:
@@ -145,6 +151,7 @@ export const projects: Project[] = [
 		title: 'Mai, an AI agent',
 		line: 'An assistant that helps run the day-to-day of a business, and asks before it acts',
 		category: 'AI feature · in testing',
+		tag: 'AI · in testing',
 		summary:
 			'An assistant that helps run the day-to-day of a business from inside the product, built so it cannot act without permission.',
 		problem:

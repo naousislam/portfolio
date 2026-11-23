@@ -237,8 +237,11 @@
 	}
 
 	@media (max-width: 860px) {
+		/* A solid bar on phones: a see-through, blurred one is redrawn on every scroll frame. */
 		.nav {
 			bottom: 14px;
+			background: var(--bg);
+			backdrop-filter: none;
 		}
 
 		/* On a phone the label is for screen readers only. */

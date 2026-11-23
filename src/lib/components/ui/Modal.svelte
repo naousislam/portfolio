@@ -110,6 +110,18 @@
 		}
 	}
 
+	/* Blurring the whole page behind the sheet is costly on a phone. A plain dim does the job. */
+	@media (max-width: 860px) {
+		dialog::backdrop,
+		dialog[open]::backdrop {
+			backdrop-filter: none;
+		}
+
+		dialog[open]::backdrop {
+			background: rgba(27, 28, 31, 0.55);
+		}
+	}
+
 	.sheet :global(.modal-close) {
 		position: absolute;
 		top: clamp(16px, 3vw, 32px);

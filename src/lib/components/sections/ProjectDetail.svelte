@@ -8,7 +8,7 @@
 	let { project }: { project: Project } = $props();
 </script>
 
-<div class="category"><Chip tone="peach">{project.category}</Chip></div>
+<div class="category"><Chip tone="peach">{project.tag}</Chip></div>
 <h2>{project.title}</h2>
 <p class="summary">{project.summary}</p>
 

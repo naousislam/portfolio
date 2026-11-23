@@ -22,6 +22,8 @@
 		padding: 4px 14px;
 		border-radius: 999px;
 		font-size: 15px;
+		/* A chip is a single line. Give it shorter words, not a second row. */
+		white-space: nowrap;
 	}
 
 	.card {
