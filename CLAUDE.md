@@ -40,7 +40,8 @@ src/
     +page.svelte        home: stacks the sections, sets SEO tags. Prerendered.
     contact/            the form action (+page.server.ts) and its no-JavaScript fallback page
     sitemap.xml/        prerendered sitemap
-static/                 favicon set, og.png, robots.txt, webmanifest
+static/                 favicon set, og.png, robots.txt, webmanifest, resume.pdf
+resume/                 source of static/resume.pdf (see its README)
 ```
 
 ## The rules that keep it consistent

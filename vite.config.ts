@@ -12,18 +12,7 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter(),
-			prerender: {
-				handleHttpError: ({ path, message }) => {
-					// TODO(Nao): remove this once static/resume.pdf (public, no phone number) is added.
-					// Every other broken link still fails the build.
-					if (path === '/resume.pdf') {
-						console.warn('\n[todo] static/resume.pdf is missing; the Résumé links will 404.\n');
-						return;
-					}
-					throw new Error(message);
-				}
-			}
+			adapter: adapter()
 		})
 	]
 });

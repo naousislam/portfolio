@@ -42,5 +42,4 @@ Pushing `stable` deploys to Vercel (project `portfolio`). The project needs Node
 
 Still to do:
 
-- Add the public résumé PDF (no phone number) at `static/resume.pdf`, then remove the `handleHttpError` allowance in `vite.config.ts`.
 - Turn on Web Analytics for the project in Vercel.

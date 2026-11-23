@@ -13,7 +13,7 @@ export const site = {
 	socialImageAlt:
 		'Naous Islam: I architect and build the systems your business runs on. Custom software, connected systems and automation.',
 	email: 'nao@naous.dev',
-	// TODO(Nao): add the public résumé PDF (no phone number) at static/resume.pdf.
+	// The public résumé. Its source is resume/resume.html.
 	resume: '/resume.pdf',
 	github: 'https://github.com/naousislam',
 	linkedin: 'https://www.linkedin.com/in/naousislam'

@@ -1,0 +1,430 @@
+<!doctype html>
+<!--
+  Source of static/resume.pdf, the public résumé.
+  Public version: no phone number, and the fitness employer is never named.
+  To rebuild the PDF, see resume/README.md.
+-->
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Naous Islam - Resume</title>
+		<style>
+			@font-face {
+				font-family: 'Instrument Sans';
+				font-weight: 400 700;
+				src: url('../node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2')
+					format('woff2');
+			}
+
+			@font-face {
+				font-family: 'Instrument Serif';
+				font-style: italic;
+				font-weight: 400;
+				src: url('../node_modules/@fontsource/instrument-serif/files/instrument-serif-latin-400-italic.woff2')
+					format('woff2');
+			}
+
+			@page {
+				size: Letter;
+				margin: 0.42in 0.6in;
+			}
+
+			:root {
+				--ink: #1b1c1f;
+				--soft: #55585e;
+				--faint: #9a9da2;
+				--line: #e2e3e6;
+				--peach: #fff0e4;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font:
+					400 9.1pt/1.4 'Instrument Sans',
+					sans-serif;
+				color: var(--ink);
+				-webkit-print-color-adjust: exact;
+				print-color-adjust: exact;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			b {
+				font-weight: 600;
+			}
+
+			/* Header */
+			.top {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+			}
+
+			h1 {
+				font-size: 25pt;
+				font-weight: 600;
+				letter-spacing: -0.035em;
+				line-height: 1.1;
+			}
+
+			.role {
+				font-size: 10.5pt;
+				font-weight: 500;
+				color: var(--soft);
+			}
+
+			.tagline {
+				margin-top: 5pt;
+				font-size: 13pt;
+				letter-spacing: -0.02em;
+			}
+
+			.tagline i {
+				font-family: 'Instrument Serif', serif;
+				font-size: 1.14em;
+				letter-spacing: 0;
+			}
+
+			.contact {
+				margin-top: 5pt;
+				color: var(--soft);
+			}
+
+			/* Section label: small grey text with a short line either side. */
+			h2 {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 9pt;
+				margin: 10pt 0 6pt;
+				font-size: 8.6pt;
+				font-weight: 500;
+				color: var(--soft);
+				break-after: avoid;
+			}
+
+			h2::before,
+			h2::after {
+				content: '';
+				width: 22pt;
+				height: 1px;
+				background: var(--line);
+			}
+
+			/* Skills */
+			.skills {
+				display: grid;
+				grid-template-columns: 92pt 1fr;
+				gap: 3.5pt 0;
+			}
+
+			.skills dt {
+				font-weight: 600;
+			}
+
+			.skills dd {
+				color: var(--soft);
+			}
+
+			/* Jobs */
+			.job {
+				margin-top: 10pt;
+			}
+
+			.job:first-of-type {
+				margin-top: 0;
+			}
+
+			.head {
+				break-inside: avoid;
+				break-after: avoid;
+			}
+
+			.title {
+				display: flex;
+				align-items: baseline;
+				justify-content: space-between;
+				font-size: 10.4pt;
+				font-weight: 600;
+			}
+
+			.dates {
+				font-size: 9.3pt;
+				font-weight: 400;
+				color: var(--soft);
+				white-space: nowrap;
+			}
+
+			.pill {
+				padding: 1pt 6pt;
+				border-radius: 99pt;
+				background: var(--peach);
+				color: var(--ink);
+				font-weight: 500;
+			}
+
+			.where {
+				color: var(--soft);
+			}
+
+			.sum {
+				margin-top: 2.5pt;
+			}
+
+			ul {
+				margin-top: 3pt;
+				list-style: none;
+			}
+
+			li {
+				position: relative;
+				margin-top: 2.6pt;
+				padding-left: 10pt;
+				color: var(--soft);
+				break-inside: avoid;
+			}
+
+			li::before {
+				content: '';
+				position: absolute;
+				top: 0.58em;
+				left: 1pt;
+				width: 3pt;
+				height: 3pt;
+				border-radius: 50%;
+				background: var(--faint);
+			}
+
+			li b {
+				color: var(--ink);
+			}
+
+			.edu {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 2.6pt;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="top">
+				<h1>Naous Islam</h1>
+				<span class="role">Software Developer</span>
+			</div>
+			<p class="tagline">I architect and build the systems a business <i>runs on.</i></p>
+			<p class="contact">
+				Vancouver, BC · <a href="mailto:nao@naous.dev">nao@naous.dev</a> ·
+				<a href="https://www.linkedin.com/in/naousislam">linkedin.com/in/naousislam</a> ·
+				<a href="https://naous.dev">naous.dev</a>
+			</p>
+		</header>
+
+		<h2>Summary</h2>
+		<p>
+			Software developer who designs, ships and operates production systems end to end: web
+			platforms, API integrations, data pipelines, analytics and CRM automation for multi-location
+			businesses. I build by directing AI coding agents under rules and procedures I wrote: I set
+			the architecture, review and approve every change, and verify results against live systems.
+		</p>
+
+		<h2>Skills</h2>
+		<dl class="skills">
+			<dt>Languages</dt>
+			<dd>TypeScript, JavaScript (Node.js), SQL (PostgreSQL), Python, Java, C++, HTML, CSS</dd>
+			<dt>Frameworks</dt>
+			<dd>SvelteKit 3, Svelte 5, Tailwind CSS, Drizzle ORM, Bun, Vitest</dd>
+			<dt>Data and platform</dt>
+			<dd>
+				Neon and Supabase Postgres, SQL migrations, Vercel (serverless, crons), Cloudflare (DNS,
+				Turnstile, R2), Git
+			</dd>
+			<dt>AI engineering</dt>
+			<dd>
+				Claude Code, multi-agent orchestration, agent rules and written procedures, review and
+				evaluation of agent output, approval gates, execution and decision logs
+			</dd>
+			<dt>Integrations</dt>
+			<dd>
+				REST API design, HubSpot CRM and workflows APIs, Google Ads API, GA4, Google Tag Manager,
+				Meta Conversions API, membership system API, sales platform API
+			</dd>
+			<dt>Practice</dt>
+			<dd>
+				Authentication and RBAC, rate-limited integration, idempotent sync, heartbeat monitoring,
+				snapshot-and-revert, test suites, incident write-ups, privacy and consent (CASL, PIPEDA)
+			</dd>
+		</dl>
+
+		<h2>Experience</h2>
+
+		<section class="job">
+			<div class="head">
+				<p class="title">
+					Growth Systems Manager
+					<span class="dates">Apr 2026 – <span class="pill">Present</span></span>
+				</p>
+				<p class="where">A 17-location fitness company · British Columbia</p>
+				<p class="sum">
+					Sole engineer and operator for the website, lead funnel, automation, analytics and CRM
+					across 17 locations.
+				</p>
+			</div>
+			<ul>
+				<li>
+					Designed, directed and shipped <b>2,100+ commits</b> across four production repositories,
+					working through AI coding agents under written rules, approval gates and review of every
+					change before release.
+				</li>
+				<li>
+					Took over the production marketing site at handoff (<b>119 pages</b>, 20 serverless
+					endpoints on Vercel) and wired the online join flow to the membership system's API for all
+					17 locations, with live per-location pricing and a failed-join ledger.
+				</li>
+				<li>
+					Built the two-way sync between HubSpot, the sales platform, the membership system and
+					Postgres: 10 scheduled jobs with heartbeat monitoring, a nightly 21-check health digest
+					and about <b>100,000 recorded runs</b> in three months.
+				</li>
+				<li>
+					Traced every person from lead to member across the sales platform, the membership system
+					and HubSpot: fuzzy matching and de-duplication on email, phone, member ID and name, with
+					<b>over 300 properties</b> kept in sync (sales rep, tour booking and outcome, attendance,
+					enrollment status), so each sale is credited to the right rep in commission statements.
+				</li>
+				<li>
+					Built an analytics app (SvelteKit, TypeScript, Drizzle, Neon): funnel reporting, lead
+					attribution, per-rep performance with role-based access, and a daily report email.
+				</li>
+				<li>
+					Built the commission pay system: rules in code, a frozen ledger, bi-weekly statements to
+					payroll and a claims workflow with recorded rulings. <b>Six pay runs</b> sent with no
+					rewritten statements.
+				</li>
+				<li>
+					Chose build over buy for the CRM sync, and cut database writes by <b>82%</b> by gating
+					scheduled jobs to opening hours.
+				</li>
+				<li>
+					Administer a HubSpot Marketing Hub Enterprise portal of about <b>280,000 contacts</b> and
+					140+ workflows; designed the sales pipeline and lead intake.
+				</li>
+				<li>
+					Manage <b>17 Google Ads campaigns</b> through the API with a snapshot, validate, write and
+					read-back procedure.
+				</li>
+				<li>
+					Built event capture for a 17-location anniversary campaign that took in about
+					<b>5,500 RSVPs</b> from web and Meta forms, writing to the database first and the CRM
+					second.
+				</li>
+				<li>
+					Designed the working framework the agents follow: rules file, access map, danger list,
+					<b>23 written procedures</b>, a decision register and an append-only execution log with
+					1,400+ dated entries.
+				</li>
+				<li>
+					Named data officer for these systems: consent rulings (CASL, PIPEDA), least-privilege
+					access for an external contractor, and incident reports that each end in a written rule or
+					a code guard.
+				</li>
+			</ul>
+		</section>
+
+		<section class="job">
+			<div class="head">
+				<p class="title">
+					Founder
+					<span class="dates">2026 – <span class="pill">Present</span></span>
+				</p>
+				<p class="where">Monody · <a href="https://monody.app">monody.app</a> · Vancouver, BC</p>
+				<p class="sum">A CRM and customer engagement platform for multi-location businesses.</p>
+			</div>
+			<ul>
+				<li>
+					Lead product, architecture and engineering on a SvelteKit, TypeScript and Postgres stack,
+					including a component-based design system that every screen is assembled from.
+				</li>
+				<li>
+					Built a multi-agent development workflow: one model holds the master plan and merges
+					results while worker models build single scoped tasks, with conventions that keep agents
+					on the stack and stop duplicate code.
+				</li>
+				<li>
+					Evaluate agent-written code and UI daily against the spec and design system, then turn
+					each finding into a rule the agents follow on the next build.
+				</li>
+				<li>
+					Onboarded the first client location onto the deal pipeline, with Google Ads campaigns and
+					landing pages feeding leads into its account.
+				</li>
+			</ul>
+		</section>
+
+		<section class="job">
+			<div class="head">
+				<p class="title">
+					Senior Full Stack Web Developer
+					<span class="dates">2023 – 2026</span>
+				</p>
+				<p class="where">Code Ninjas BC · Vancouver, BC</p>
+				<p class="sum">
+					Owned end-to-end system architecture and release management for internal multi-location
+					platforms.
+				</p>
+			</div>
+			<ul>
+				<li>
+					Built modular interfaces in SvelteKit with API-driven state management, and secure REST
+					APIs (Bun/Node.js) with role-based access control.
+				</li>
+				<li>Modeled relational Postgres schemas supporting analytics and reporting.</li>
+				<li>
+					Developed and published a web application generating over
+					<b>500 qualified leads per month</b>.
+				</li>
+				<li>
+					Architected and delivered a student rewards system, and led a team of developers through
+					design, review and deployment cycles.
+				</li>
+			</ul>
+		</section>
+
+		<section class="job">
+			<div class="head">
+				<p class="title">
+					Coding Instructor to Center Director
+					<span class="dates">2023 – 2026</span>
+				</p>
+				<p class="where">Code Ninjas Vancouver South · Vancouver, BC</p>
+			</div>
+			<ul>
+				<li>
+					Ran center operations including sales, the enrollment pipeline, CRM workflows and
+					operational reporting.
+				</li>
+				<li>
+					Led, trained and mentored a team of instructors delivering a structured coding curriculum.
+				</li>
+			</ul>
+		</section>
+
+		<h2>Education</h2>
+		<p class="edu">
+			<span><b>Associate of Science, Computer Science</b> · Langara College</span>
+			<span class="dates">2020 – 2022</span>
+		</p>
+		<p class="edu">
+			<span><b>Cybersecurity and IT Systems (CISA Program)</b> · BCIT</span>
+			<span class="dates">2019 – 2020</span>
+		</p>
+	</body>
+</html>
