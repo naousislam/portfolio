@@ -136,7 +136,10 @@ The copy is governed by the owner's content spec:
 ### 5. Use the platform and SvelteKit before writing your own
 
 - Forms: SvelteKit form actions + `use:enhance`. No client-side fetch for form posts.
-- Dialogs: native `<dialog>` via `Modal`. Carousels: Embla (`embla-carousel-svelte`).
+- Dialogs: native `<dialog>` via `Modal`.
+- Carousels: the browser's own scrolling with CSS scroll snap, as in `Projects.svelte`. Do not
+  move a carousel with script: script-driven movement stutters on phones. Size and fade that
+  follow the swipe use a scroll-driven animation (`animation-timeline: view(inline)`).
 - Images: `<enhanced:img>` with a `?enhanced` import.
 - Same-page links are plain `<a href="#id">`; `SectionNav` makes them all land centred.
 - No secrets in the repo. `.env` is ignored; `.env.example` is committed and holds no values.

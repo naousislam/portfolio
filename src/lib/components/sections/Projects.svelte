@@ -1,7 +1,5 @@
 <script lang="ts">
 	import ArrowRight from '@lucide/svelte/icons/arrow-right';
-	import type { EmblaCarouselType } from 'embla-carousel';
-	import emblaCarousel from 'embla-carousel-svelte';
 	import { projects } from '#lib/content/projects.ts';
 	import { pauseOffscreen, reveal } from '#lib/motion.ts';
 	import Chip from '#lib/components/ui/Chip.svelte';
@@ -11,40 +9,96 @@
 	import ProjectVisual from './ProjectVisual.svelte';
 
 	/*
-	 * A looping carousel (Embla): the project in focus sits in the middle at full size, its
-	 * neighbours are smaller and dimmed, and the row runs off both edges of the screen.
-	 * Dragging, swiping, or pressing a neighbour moves it, and it wraps around. There are no
-	 * arrow buttons: the neighbouring projects are the buttons.
+	 * A looping carousel: the project in focus sits in the middle at full size, its neighbours
+	 * are smaller and dimmed, and the row runs off both edges of the screen.
+	 *
+	 * It is built on the browser's own scrolling (CSS scroll snap), not on script-driven
+	 * movement. The browser handles a swipe on the graphics layer, so page code can never make
+	 * it stutter. The size-and-fade of each card is tied to its scroll position in CSS too.
+	 *
+	 * Looping: the projects are laid out three times in a row and the visitor always starts in
+	 * the middle copy. Whenever scrolling comes to rest in an outer copy, the row is moved by
+	 * exactly one copy's width. The copies are identical, so nothing is seen to change.
 	 */
-	let carousel = $state<EmblaCarouselType>();
-	let focused = $state(0);
-	// True while the carousel is moving. Loops pause for that time so the swipe stays smooth.
+	const COPIES = 3;
+	const HOME_COPY = 1;
+	const count = projects.length;
+	const slides = Array.from({ length: COPIES * count }, (_, slide) => ({
+		slide,
+		copy: Math.floor(slide / count),
+		index: slide % count,
+		project: projects[slide % count]
+	}));
+
+	let row: HTMLDivElement;
+	// The slide sitting in the middle of the screen, counted across all three copies.
+	let centred = $state(HOME_COPY * count);
+	const focused = $derived(centred % count);
+	// True while the row is moving. The picture loops pause for that time.
 	let moving = $state(false);
-	let restTimer: ReturnType<typeof setTimeout> | undefined;
-
-	// Movement reports itself many times a second; a short quiet spell means it has stopped.
-	function onMove() {
-		moving = true;
-		clearTimeout(restTimer);
-		restTimer = setTimeout(() => (moving = false), 180);
-	}
-
-	function onCarouselReady(event: CustomEvent<EmblaCarouselType>) {
-		const api = event.detail;
-		carousel = api;
-		focused = api.selectedScrollSnap();
-		api.on('select', () => (focused = api.selectedScrollSnap()));
-		api.on('scroll', onMove);
-	}
 
 	let detail = $state(projects[0]);
 	let open = $state(false);
 
-	function press(index: number) {
-		// Embla swallows the click that ends a drag, so a press here is always deliberate.
-		// A neighbour comes into focus first. The focused project opens its detail.
-		if (carousel && index !== focused) {
-			carousel.scrollTo(index);
+	const slideAt = (slide: number) => row.children[slide] as HTMLElement;
+
+	function centreOn(slide: number, behavior: ScrollBehavior) {
+		const target = slideAt(slide);
+		row.scrollTo({
+			left: target.offsetLeft - (row.clientWidth - target.offsetWidth) / 2,
+			behavior
+		});
+	}
+
+	$effect(() => {
+		centreOn(HOME_COPY * count, 'instant');
+
+		// Slides are evenly spaced and the first one is centred at zero, so the slide in the
+		// middle follows directly from how far the row has scrolled.
+		const step = () => slideAt(1).offsetLeft - slideAt(0).offsetLeft;
+		const readCentred = () => {
+			const now = Math.round(row.scrollLeft / step());
+			if (now !== centred) centred = now;
+			return now;
+		};
+
+		// Once the row is at rest: resume the loops, and step back to the middle copy if needed.
+		let restTimer: ReturnType<typeof setTimeout>;
+		const atRest = () => {
+			moving = false;
+			const copy = Math.floor(readCentred() / count);
+			if (copy !== HOME_COPY) {
+				// An absolute scrollTo, not scrollBy: a relative scroll would be halted at the very
+				// next slide by `scroll-snap-stop: always`.
+				const left = row.scrollLeft + (HOME_COPY - copy) * count * step();
+				row.scrollTo({ left, behavior: 'instant' });
+				readCentred();
+			}
+		};
+		const onScroll = () => {
+			moving = true;
+			readCentred();
+			clearTimeout(restTimer);
+			// "scrollend" is the precise signal; this timer covers browsers without it.
+			restTimer = setTimeout(atRest, 160);
+		};
+		const onScrollEnd = () => {
+			clearTimeout(restTimer);
+			atRest();
+		};
+
+		row.addEventListener('scroll', onScroll, { passive: true });
+		row.addEventListener('scrollend', onScrollEnd);
+		return () => {
+			clearTimeout(restTimer);
+			row.removeEventListener('scroll', onScroll);
+			row.removeEventListener('scrollend', onScrollEnd);
+		};
+	});
+	function press(slide: number, index: number) {
+		// A neighbour comes into focus first. The project already in focus opens its detail.
+		if (slide !== centred) {
+			centreOn(slide, 'smooth');
 			return;
 		}
 		detail = projects[index];
@@ -59,40 +113,40 @@
 		</div>
 
 		<div class={['carousel', { moving }]} {@attach reveal(100)} {@attach pauseOffscreen()}>
-			<div
-				class={['viewport', { ready: carousel }]}
-				use:emblaCarousel={{ options: { loop: true, align: 'center' }, plugins: [] }}
-				onemblaInit={onCarouselReady}
-			>
-				<div class="track">
-					{#each projects as project, index (project.id)}
-						<div class={['slide', { focused: index === focused }]}>
-							<button
-								type="button"
-								class="card"
-								aria-haspopup="dialog"
-								aria-current={index === focused ? 'true' : undefined}
-								onclick={() => press(index)}
-							>
-								<span class="visual" aria-hidden="true">
-									<Chip tone="raised" class="project-badge">{project.badge}</Chip>
-									<ProjectVisual kind={project.visual} />
-								</span>
-								<span class="title">{project.title}</span>
-								<span class="line">{project.line}</span>
-								<span class="category">{project.category}</span>
-								<!-- Only the project in focus opens; its neighbours come into focus first. -->
-								<span class="more text-link">
-									Read More
-									<ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
-								</span>
-							</button>
-						</div>
-					{/each}
-				</div>
+			<div class="row" bind:this={row}>
+				{#each slides as { slide, copy, index, project } (slide)}
+					<!-- The outer copies exist only so the row can loop; assistive tech reads the middle one. -->
+					<div
+						class={['slide', { focused: index === focused }]}
+						data-slide={slide}
+						aria-hidden={copy === HOME_COPY ? undefined : 'true'}
+					>
+						<button
+							type="button"
+							class="card"
+							aria-haspopup="dialog"
+							aria-current={slide === centred ? 'true' : undefined}
+							tabindex={copy === HOME_COPY ? undefined : -1}
+							onclick={() => press(slide, index)}
+						>
+							<span class="visual" aria-hidden="true">
+								<Chip tone="raised" class="project-badge">{project.badge}</Chip>
+								<ProjectVisual kind={project.visual} />
+							</span>
+							<span class="title">{project.title}</span>
+							<span class="line">{project.line}</span>
+							<span class="category">{project.category}</span>
+							<!-- Only the project in focus opens; its neighbours come into focus first. -->
+							<span class="more text-link">
+								Read More
+								<ArrowRight size={15} strokeWidth={2.2} aria-hidden="true" />
+							</span>
+						</button>
+					</div>
+				{/each}
 			</div>
 
-			<p class="count">{projects.length} Projects</p>
+			<p class="count">{count} Projects</p>
 		</div>
 	</div>
 </section>
@@ -111,27 +165,31 @@
 		--lift: 16px;
 	}
 
-	/* Full width of the screen, so the row runs off both edges instead of being cut short. */
-	.viewport {
-		padding-block: var(--lift);
-		/* Until the carousel script is running, the row can still be scrolled by hand. */
+	/*
+	 * The scrolling row. It spans the full width of the screen, so the projects run off both
+	 * edges. The side padding lets the first and last slide reach the centre.
+	 */
+	.row {
+		position: relative;
+		display: flex;
+		padding: var(--lift) calc(50% - var(--slide) / 2);
 		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
 		scrollbar-width: none;
 	}
 
-	.viewport.ready {
-		overflow: hidden;
-	}
-
-	.track {
-		display: flex;
-		touch-action: pan-y pinch-zoom;
+	.row::-webkit-scrollbar {
+		display: none;
 	}
 
 	.slide {
 		flex: 0 0 var(--slide);
 		min-width: 0;
 		padding-inline: calc(var(--gap) / 2);
+		scroll-snap-align: center;
+		/* One project per swipe, however hard the flick. This also keeps the loop seamless. */
+		scroll-snap-stop: always;
 	}
 
 	.card {
@@ -144,10 +202,8 @@
 		background: none;
 		text-align: center;
 		cursor: pointer;
-		/* Out of focus: smaller and quieter. */
+		/* Out of focus: smaller and quieter. This class-based version is the fallback. */
 		opacity: 0.45;
-		/* Keeps each card on its own graphics layer, so resizing one never redraws the others. */
-		will-change: transform, opacity;
 		transform: scale(0.88);
 		transition:
 			opacity 0.6s var(--ease),
@@ -159,10 +215,37 @@
 		transform: none;
 	}
 
-	/* Only the project in focus plays its loop. The dimmed ones hold still, which keeps
-	   swiping smooth on a phone. */
-	.slide:not(.focused) :global(*),
-	.carousel.moving :global(*) {
+	/*
+	 * Where the browser supports it, the size and fade follow the card's position in the row
+	 * directly: full size as it crosses the centre, small and dim towards the edges. The browser
+	 * runs this on the graphics layer, in step with the finger.
+	 */
+	@supports (animation-timeline: view()) {
+		.card,
+		.slide.focused .card {
+			transition: none;
+			animation: come-into-focus linear both;
+			animation-timeline: view(inline);
+		}
+
+		@keyframes come-into-focus {
+			0%,
+			30%,
+			70%,
+			100% {
+				opacity: 0.45;
+				transform: scale(0.88);
+			}
+			50% {
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+
+	/* Only the project in focus plays its picture's loop, and not while the row is moving. */
+	.slide:not(.focused) .visual :global(*),
+	.carousel.moving .visual :global(*) {
 		animation-play-state: paused;
 	}
 
@@ -178,6 +261,12 @@
 		overflow: hidden;
 		border-radius: 28px;
 		background: var(--surface);
+	}
+
+	.visual :global(.project-badge) {
+		position: absolute;
+		top: 18px;
+		left: 18px;
 	}
 
 	.title {
@@ -198,14 +287,6 @@
 		margin-top: 6px;
 		font-size: 15.5px;
 		color: var(--muted);
-	}
-
-	/* The cue that the focused project opens. Same look as "Read more" on the story cards. */
-
-	.visual :global(.project-badge) {
-		position: absolute;
-		top: 18px;
-		left: 18px;
 	}
 
 	/* The cue that the focused project opens. */

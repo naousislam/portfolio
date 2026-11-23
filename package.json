@@ -46,7 +46,6 @@
 	"dependencies": {
 		"@upstash/ratelimit": "^2.2.1",
 		"@upstash/redis": "^1.41.0",
-		"embla-carousel-svelte": "^8.6.0",
 		"resend": "^6.39.0"
 	}
 }
