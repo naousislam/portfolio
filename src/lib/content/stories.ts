@@ -28,7 +28,7 @@ export const stories: Story[] = [
 		id: 'learning',
 		tab: '11 Learning Centers',
 		headline: { lead: 'Then I spent a few years teaching kids to', accent: 'code.' },
-		body: 'I started as an instructor, and it taught me how to really communicate with people. I built relationships with the families and the team around me, and slowly learned a business very different from the store. In time I became Center Director, looking after our families and their accounts, and sorting things out when something went wrong. Along the way I worked with our marketing team on the website and the ads that brought new families in.',
+		body: 'I started as an instructor, and it taught me how to really communicate with people. I built relationships with the families and the team around me, and slowly learned a business very different from the store. In time I became Center Director, looking after our families and their accounts, and sorting things out when something went wrong. Along the way I saw that our website could bring in more families, so I built a new landing page on my own time, unasked and unpaid. Building it was the smaller part. I sat down with leadership, listened to what they wanted, and walked them through what I had made until they were ready to try it. It went on to bring in leads for all 11 locations.',
 		stats: [
 			{ value: '15', label: 'People on the Team I Led' },
 			{ value: '500+', label: 'Qualified Leads a Month' },
